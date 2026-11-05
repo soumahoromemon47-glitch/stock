@@ -3,7 +3,6 @@ name: CI
 on:
   push:
     branches: [main, master]
-
   pull_request:
 
 jobs:
@@ -11,13 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Récupérer le code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22.5.0
           cache: npm
 
-      - run: npm ci
+      - name: Installer les dépendances
+        run: npm ci
 
-      - run: npm test
+      - name: Vérifier Node SQLite
+        run: node --input-type=module -e "import { DatabaseSync } from 'node:sqlite'; console.log('SQLite OK:', typeof DatabaseSync)"
+
+      - name: Exécuter les tests
+        run: npm test
