@@ -2,6 +2,9 @@ node_modules/
 stock.db
 stock.db-wal
 stock.db-shm
+test_*.db
+test_*.db-wal
+test_*.db-shm
 public/uploads/
 *.log
 .DS_Store

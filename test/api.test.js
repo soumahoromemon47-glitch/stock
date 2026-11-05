@@ -29,13 +29,15 @@ test.before(async () => {
   throw new Error("server not ready");
 });
 
-test.after(() => {
-  server.kill();
-  try {
-    for (const f of [DB_FILE, DB_FILE + "-wal", DB_FILE + "-shm"]) {
-      if (existsSync(f)) unlinkSync(f);
-    }
-  } catch {}
+test.after(async () => {
+  if (server && server.exitCode === null && server.signalCode === null) {
+    const exited = new Promise((resolve) => server.once("exit", resolve));
+    server.kill();
+    await exited;
+  }
+  for (const file of [DB_FILE, DB_FILE + "-wal", DB_FILE + "-shm"]) {
+    if (existsSync(file)) unlinkSync(file);
+  }
 });
 
 async function api(path, options = {}) {
