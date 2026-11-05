@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+stock.db
+stock.db-wal
+stock.db-shm
+public/uploads/
+test_*.db
+test_*.db-wal
+test_*.db-shm
+.git
+.github

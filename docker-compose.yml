@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  stock:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_PATH=/data/stock.db
+    volumes:
+      - stock-data:/data
+      - stock-images:/app/public/uploads
+volumes:
+  stock-data:
+  stock-images:
