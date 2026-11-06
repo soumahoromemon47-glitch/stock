@@ -1,6 +1,10 @@
-import pg from "pg";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.development.local" }); // Charge le fichier en local, l'ignore sur GitHub
 
+import pg from "pg";
 const { Pool } = pg;
+
+// ... le reste de votre code ne change pas ...
 
 // Utilise les variables d'environnement de Neon/Vercel
 // (POSTGRES_URL ou DATABASE_URL selon ce qui est généré)
