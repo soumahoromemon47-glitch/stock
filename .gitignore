@@ -10,3 +10,6 @@ public/uploads/
 .DS_Store
 Thumbs.db
 .vercel
+.env.development.local
+.env
+.env.local
