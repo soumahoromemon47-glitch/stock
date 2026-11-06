@@ -16,7 +16,7 @@ test.before(async () => {
       NODE_ENV: "test",
       DB_PATH: DB_FILE,
     },
-    stdio: ["ignore", "inherit", "inherit"],s
+    stdio: ["ignore", "inherit", "inherit"],
   });
   // wait for server
   for (let i = 0; i < 50; i++) {
