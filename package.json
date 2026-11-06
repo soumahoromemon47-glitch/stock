@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": ">=26.13.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "test": "node --test"
+    "start": "node --env-file=.env.development.local server.js",
+    "test": "node --env-file=.env.development.local --test"
   },
   "dependencies": {
     "express": "^4.19.2",
-    "multer": "^2.5.0"
+    "multer": "^2.5.0",
+    "pg": "^8.23.1"
   }
 }
